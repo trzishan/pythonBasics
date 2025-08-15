@@ -5,9 +5,19 @@ class Flight():
 
     def add_passenger(self, name):
         if not self.open_seats():
-            self.passengers.append(name)
+            return False
+        self.passengers.append(name)
+        return True
 
     def open_seats(self):
         return self.capacity - len(self.passengers)
 
 flight = Flight(3)
+
+people = ["Harry", "Ron", "Harmione", "Ginny"]
+
+for person in people:
+    if flight.add_passenger(person):
+        print(f"Added {person} to the flight.")
+    else:
+        print(f"No room for {person}")
